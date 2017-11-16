@@ -89,13 +89,14 @@ int busqueda()
     tElemento *Actual=(tElemento*) malloc(sizeof(tElemento));
 
     tElemento *Inicial=nodoInicial();
-    //tEstado *Final=estadoObjetivo();
+    tEstado *Final=estadoObjetivo();
 
     Lista Abiertos = (Lista) CrearLista(MAXI);
     Lista Cerrados = (Lista) CrearLista(MAXI);
     Lista Sucesores;
 
     InsertarUltimo((void *) Inicial, Abiertos);
+
 
     while (!ListaVacia(Abiertos) && !objetivo)
     {
@@ -104,7 +105,7 @@ int busqueda()
         dispEstado(Actual->estado);
         system("pause");*/
         EliminarPrimero(Abiertos);
-        
+
         int repetido = buscaRepe(Actual->estado,Cerrados);
 
         if(!repetido){
@@ -115,7 +116,7 @@ int busqueda()
             {
                 Sucesores = expandir(Actual);
                 Abiertos  = Concatenar(Abiertos, Sucesores);
-                //InsertarUltimo((void*)Actual,Cerrados);
+                InsertarUltimo((void*)Actual,Cerrados);
             }
         }
     }
@@ -126,15 +127,18 @@ int busqueda()
 
 int buscaRepe(tEstado *s, Lista L1)
 {
-    int coincide = 0, i=0;
+    int repetido = 0, i = 0;
 
-    while( !coincide && i < L1->Nelem )
+    while( !repetido && i < L1->Nelem )
     {
-        if( iguales(s,ExtraerElem(L1,i)->estado)) coincide = 1;
+        tElemento *a = ExtraerElem(L1, i);
+        tEstado *b = a->estado;
+
+        if( iguales(s,b) ) repetido = 1;
         i++;
     }
 
-    return coincide;
+    return repetido;
 
 }
 

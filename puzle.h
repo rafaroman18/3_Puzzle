@@ -25,9 +25,9 @@ typedef struct {
 
 static int puzle_inicial[N][N]=
         {
-                {1,3,7},
-                {8,4,6},
-                {0,2,5}
+                {1,2,3},
+                {6,0,4},
+                {8,7,5}
         };
 
 
