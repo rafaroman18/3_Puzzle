@@ -11,7 +11,7 @@
 #define IZQUIERDA 3
 #define DERECHA 4
 #define NUM_OPERADORES 4
-#define N 3
+#define N 2
 
 
 #ifndef _tEstado_
@@ -25,17 +25,15 @@ typedef struct {
 
 static int puzle_inicial[N][N]=
         {
-                {1,2,3},
-                {6,0,4},
-                {8,7,5}
+                {1,2},
+                {3,0}
         };
 
 
 static int puzle_final[N][N]=
         {
-                {1,2,3},
-                {8,0,4},
-                {7,6,5}
+                {1,2},
+                {3,0}
         };
 
 
